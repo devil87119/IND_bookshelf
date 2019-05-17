@@ -1,35 +1,64 @@
-$(document).ready(function(){
-	$.ajax({
-		url:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTmgEqTF0aRgK2DQpVDrEZd-Dt9n1RLp6xR6GZ2LOWdW1hnIWd6HawsXrq9vTr8ACU0UVapyIb76ZgR/pub?gid=1713242840&single=true&output=csv",
-		dataType:"text",
-		success:function(data){
-			var employee_data = data.split(/\r?\n|\r/);
-			var table_data = '<table class="table table-bordered table-striped table-sm" cellspacing="0" id="books">';
-			for(var count = 0; count<employee_data.length; count++){
-				var cell_data = employee_data[count].split(",");
-				if(count < 11)continue;
-				if(count ===11){table_data += '<thead class ="thead-dark">'}
-				else table_data += '<tr>';
-				for(var cell_count=0; cell_count<cell_data.length; cell_count++){
-					if(count ===11){
-						table_data += '<th scope="col" class = "th-sm">'+cell_data[cell_count]+'</th>';
-					}
-					else{
-						table_data += '<td>'+cell_data[cell_count]+'</td>';
-					}
-				}
-				if(count ===11){table_data += '</thead'}
-				table_data += '</tr>';
+$(document).ready(function(){	
+	$('#table').bootstrapTable({
+	ajax : function (request) {
+        $.ajax({
+            type : "GET",
+            url : "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmgEqTF0aRgK2DQpVDrEZd-Dt9n1RLp6xR6GZ2LOWdW1hnIWd6HawsXrq9vTr8ACU0UVapyIb76ZgR/pub?gid=1713242840&single=true&output=csv",
+			contentType: "application/json;charset=utf-8",
+			dataType:"jsonp",
+			data:'',
+			jsonp:'callback',
+            success : function (data) {			
+				request.success({
+                    row : data
+                });
+                $('#books').bootstrapTable('load', data);
+            },
+			error:function(){
+				alert("错误");
 			}
-			table_data += '</table>';
-			$('#app').html(table_data);
-		}
+        });
+	},
+		
+		toolbar:'#toolbar',
+		singleSelect:true,
+		clickToSelect:true,	
+		sortName: "Item",
+		sortOrder: "desc",
+		pageSize: 15,
+		pageNumber: 1,
+		pageList: "[10, 25, 50, 100, All]",
+		showToggle: true,
+		showRefresh: true,
+		showColumns: true,
+		search: true,
+		pagination: true,
+		columns: [{
+			field: "check",
+			checkbox:true,
+		},{
+			field: 'Item',
+			title: 'Item',
+			switchable: true,
+			sortable: true
+		}, {
+			field: 'Total',
+			title: 'Total',
+			switchable: true
+		}, {
+			field: 'position',
+			title: '收納位置',
+			switchable: true,
+			sortable: true
+		}, {
+			field: 'state',
+			title: '借閱狀態',
+			switchable: true
+		}, {
+			field: 'Note',
+			title: 'Note',
+			switchable: true
+		}],
+ 
 	});
-	
 })
-
-window.onload = function(){ 
-	$('#books').DataTable();
-	$('.dataTables_length').addClass('bs-select');
-	console.log(1);
-} 
