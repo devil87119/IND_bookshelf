@@ -1,31 +1,22 @@
+var book;
 $(document).ready(function(){	
-	$('#table').bootstrapTable({
-	ajax : function (request) {
-        $.ajax({
-            type : "GET",
-            url : "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmgEqTF0aRgK2DQpVDrEZd-Dt9n1RLp6xR6GZ2LOWdW1hnIWd6HawsXrq9vTr8ACU0UVapyIb76ZgR/pub?gid=1713242840&single=true&output=csv",
-			contentType: "application/json;charset=utf-8",
-			dataType:"jsonp",
-			data:'',
-			jsonp:'callback',
-            success : function (data) {			
-				request.success({
-                    row : data
-                });
-                $('#books').bootstrapTable('load', data);
-            },
-			error:function(){
-				alert("错误");
-			}
-        });
-	},
-		
+
+	$.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTmgEqTF0aRgK2DQpVDrEZd-Dt9n1RLp6xR6GZ2LOWdW1hnIWd6HawsXrq9vTr8ACU0UVapyIb76ZgR/pub?gid=1713242840&single=true&output=csv", function (data) {
+		book = JSON.parse(csvJSON(data));
+		$(book).each(function (k, v) {
+			console.log(v);
+		})
+		list();
+    })
+})
+
+function list(){
+	$('#books').bootstrapTable({	
 		toolbar:'#toolbar',
-		singleSelect:true,
 		clickToSelect:true,	
 		sortName: "Item",
 		sortOrder: "desc",
-		pageSize: 15,
+		pageSize: 10,
 		pageNumber: 1,
 		pageList: "[10, 25, 50, 100, All]",
 		showToggle: true,
@@ -44,21 +35,42 @@ $(document).ready(function(){
 		}, {
 			field: 'Total',
 			title: 'Total',
-			switchable: true
+			switchable: true,
+			sortable: false
 		}, {
-			field: 'position',
+			field: '收納位置',
 			title: '收納位置',
 			switchable: true,
 			sortable: true
 		}, {
-			field: 'state',
+			field: '借閱狀態',
 			title: '借閱狀態',
 			switchable: true
 		}, {
 			field: 'Note',
 			title: 'Note',
 			switchable: true
-		}],
- 
+		}], 
+	data: book,	
 	});
-})
+	
+	console.log(book);
+}
+
+
+
+function csvJSON(csv){
+  var lines=csv.split("\n");
+  var result = [];
+  var headers=lines[11].split(",");
+  for(var i=12;i<lines.length;i++){
+	  var obj = {};
+	  var currentline=lines[i].split(",");
+	  for(var j=0;j<headers.length;j++){
+		  obj[headers[j]] = currentline[j];
+	  }
+	  result.push(obj);
+  }  
+  //return result; //JavaScript object
+  return JSON.stringify(result); //JSON
+}
