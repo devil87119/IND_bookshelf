@@ -4,23 +4,74 @@ body{
 	margin: 0;	
 	font-family: 'Poppins', sans-serif;
 	padding = 0;
-	text-align: center;
 }
 div.contain{
 	border: 2px solid #000000;
-	margin-top: 10%;
+	margin-top: 5%;
 	margin-bottom: 10%;
 }
 table{
 	margin: 0;	
 	padding = 0;
 }
-
+#books{	
+	background-color: #8B4513;
+}
 #books thead {
-	background: black;
+	background: 8B4513;
 	color: white;
 }
 
+#page{
+	margin-left: 20px;
+	text-align: left;
+}
+
+tr.custom--select td {
+	background-color: #CFF5FF !important;; /*custom color here add !important if you don't want the hover color*/
+}
+
+tr.bg_tr1 td{
+	background-color: #CD853F;
+}
+tr.bg_tr2 td{
+	background-color: #DEB887;
+}
+
+.search {
+      width: 25%;
+      position: relative;
+    }
+    
+    .search span {
+      position: absolute; /*Set search icon*/
+      right: 10px;
+      top: 10px;
+    }
+    .search input[type=text]{
+      border-color: black; /*Set the border color for search box*/
+	  width: 125%;
+	  height: 32;
+	  margin-left: 10px;
+    }
+    .search input[type=text]:focus{
+     outline:none;
+     box-shadow:none; /*If you dont need the shadow on click*/
+    }
+    
+    .fixed-table-toolbar .bs-bars,
+    .fixed-table-toolbar .search,
+    .fixed-table-toolbar .columns {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      line-height: 34px;
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    background-color: #CFF5FF;
+}
 
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting:before,
