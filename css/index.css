@@ -21,10 +21,16 @@ div.contain{
 	color: #2c3e5036;
 	background-image: url(../pic/water.png);
 	-webkit-background-clip:text;
-	animation: water 15s infinite;
+	animation: water 20s infinite;
+}
+
+.name{
+	margin-left: 10px;
 }
 
 .top{
+	overflow: hidden; /* 超過範圍隱藏 */
+    white-space: nowrap; /* 不斷行 */
 	position: absolute;
 	top: 30px;
 	left: 30px;
@@ -59,9 +65,11 @@ div.contain{
 	float:left;
 }
 .rain{
+	overflow: hidden; /* 超過範圍隱藏 */
+	/*background-repeat: no-repeat;*/
 	height: 100vh;
 	background-image: url(../pic/rain.png);
-	animation: rain .4s linear infinite;
+	animation: rain 0.4s linear infinite;
 }
 .rain: before{
 	content: '';
@@ -76,6 +84,6 @@ div.contain{
 		background-position: 0% 0%;
 	}
 	100%{
-		background-position: 15% 100%;
+		background-position: 150px 250px;
 	}
 }
