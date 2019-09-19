@@ -1,5 +1,5 @@
 var book;
-$(document).ready(function(){	
+$(document).ready(function(){
 
 	$.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTmgEqTF0aRgK2DQpVDrEZd-Dt9n1RLp6xR6GZ2LOWdW1hnIWd6HawsXrq9vTr8ACU0UVapyIb76ZgR/pub?gid=1713242840&single=true&output=csv", function (data) {
 		book = JSON.parse(csvJSON(data));
@@ -11,9 +11,9 @@ $(document).ready(function(){
 })
 
 function list(){
-	$('#books').bootstrapTable({	
+	$('#books').bootstrapTable({
 		toolbar:'#toolbar',
-		clickToSelect:true,	
+		clickToSelect:true,
 		sortName: "Item",
 		sortOrder: "desc",
 		pageNumber: 1,
@@ -52,8 +52,8 @@ function list(){
 			field: 'Note',
 			title: 'Note',
 			switchable: true
-		}], 
-	data: book,	
+		}],
+	data: book,
 	});
 	$('#books').bootstrapTable('hideColumn', 'Note');
 	$('#books').bootstrapTable('refreshOptions', {
@@ -70,8 +70,8 @@ function list(){
 		}*/
 		rowStyle(row, -1);
 		//console.log(row);
-		//console.log($element);	
-		//$($element).siblings().removeClass('custom--select');      
+		//console.log($element);
+		//$($element).siblings().removeClass('custom--select');
 		//$($element).addClass('custom--select');
 	});
 }
@@ -107,12 +107,12 @@ $(function() {
       $('#table').bootstrapTable('uncheckAll')
     })
  })
- 
-$(function(){//custom search 
+
+$(function(){//custom search
 $(".search").append('<span class="glyphicon glyphicon-search"></span>');
 /* add the span inside search div with append box*/
 });
- 
+
 function responseHandler(res) {
     res.rows.forEach(function (item) {
       item.state = checkAll
@@ -128,10 +128,10 @@ $.fn.bootstrapTable.locales['zh-CN'] = {
 		return '正在努力地載入資料中，請稍候……';
 	},
 	formatRecordsPerPage: function (pageNumber) {
-		return '<span id = "page">每頁顯示 '+pageNumber+' 條記錄<span>';
+		return '<span class = "page">每頁顯示 '+pageNumber+' 條記錄<br></span>';
 	},
 	formatShowingRows: function (pageFrom, pageTo, totalRows) {
-		return '<span id = "page">顯示第 ' +  pageFrom  + ' 到第 ' +  pageTo  + ' 條記錄，總共 '+   totalRows +  ' 條記錄<br><span>';
+		return '<span class = "page">顯示第 ' +  pageFrom  + ' 到第 ' +  pageTo  + ' 條記錄，總共 '+   totalRows +  ' 條記錄<span>';
 	},
 	formatSearch: function () {
 		return '搜尋';
@@ -175,37 +175,7 @@ function csvJSON(csv){
 		  obj[headers[j]] = currentline[j];
 	  }
 	  result.push(obj);
-  }  
+  }
   //return result; //JavaScript object
   return JSON.stringify(result); //JSON
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,7 +1,7 @@
 
 /* Main Style */
 body{
-	margin: 0;	
+	margin: 0;
 	font-family: 'Poppins', sans-serif;
 	padding = 0;
 }
@@ -9,19 +9,21 @@ div.contain{
 	border: 2px solid #000000;
 	margin-top: 5%;
 	margin-bottom: 10%;
-}
-table{
-	margin: 0;	
-	padding = 0;
-}
-#books{	
 	background-color: #8B4513;
 }
+table{
+	margin: 0;
+	padding = 0;
+}
+#books{
+	background-color: red;
+}
 #books thead {
-	background: 8B4513;
+	background: #000000;
 	color: white;
 }
-
+#toolbar{
+}
 #page{
 	margin-left: 20px;
 	text-align: left;
@@ -37,12 +39,15 @@ tr.bg_tr1 td{
 tr.bg_tr2 td{
 	background-color: #DEB887;
 }
+.top{
 
+}
 .search {
-      width: 25%;
+      width: 150px;
       position: relative;
+			margin-right: 50px !important;
     }
-    
+
     .search span {
       position: absolute; /*Set search icon*/
       right: 10px;
@@ -58,16 +63,113 @@ tr.bg_tr2 td{
      outline:none;
      box-shadow:none; /*If you dont need the shadow on click*/
     }
-    
+
     .fixed-table-toolbar .bs-bars,
     .fixed-table-toolbar .search,
     .fixed-table-toolbar .columns {
       position: relative;
       margin-top: 10px;
       margin-bottom: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
       line-height: 34px;
 }
-
+.page{
+	color: #F0E68C;
+	margin-left: 10px;
+	font-size: 15;
+}
+.page2{
+	color: #F0E68C;
+	margin-left: 10px;
+	margin-bottom: 15px;
+	font-size: 15;
+}
+span button{
+	background-color: #00AA00 !important;
+	font-size: 10;
+	border-color: #227700 !important;
+}
+div .pagination{
+	box-sizing: border-box;
+	text-align: left;
+	float:right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.pagination a{
+	margin: 6px 1px;
+	display: inline-block;
+	border-style: none;
+	background-color: #2c3e50;
+	color: #fff;
+	font-weight: 300;
+	height: 30px;
+	line-height: 30px;
+	text-align: left;
+	width: 30px;
+	transition: 0.2s;
+	position: relative;
+	padding-right: 26px !important;
+}
+.pagination .disabled a{
+	background-color: #2c3e50 !important;
+}
+.pagination a:hover{
+	color: #e74c3c;
+	background-color: white;
+}
+.pagination a:hover:after{
+	border-color: white;
+	border-right-color: #2c3e50 !important;
+}
+.pagination a:hover::before{
+	border-right-color: white !important;
+}
+.pagination a:focus{
+	background-color: white;
+}
+.pagination .active a{
+	color: #e74c3c !important;
+	background-color: #CCCCFF !important;
+}
+.pagination .active a:after{
+	border-color: #CCCCFF;
+}
+.pagination .active a::before{
+	border-right-color: #CCCCFF !important;
+}
+.page-pre a{
+	pointer-events: none;
+	border-radius: 15px 0 0 15px !important;
+}
+.page-next a{
+	border-radius: 0 15px 15px 0 !important;
+}
+.pagination a::before,.pagination a:after{
+	content: "";
+	position: absolute;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+}
+.pagination li:nth-child(1n+2) a::before,.page-next a::before{
+	border-right: 10px solid #2c3e50;
+	transform: translateY(-6px);
+	right: 100%;
+	z-index: 1;
+}
+.pagination li:nth-child(-1n+8) a:after,.page-prev a:after{
+	border-right: 10px solid #8B4513;/*#8B4513*/
+	transform: translateY(-26px);
+	right: 0;
+	z-index: 0;
+}
+.pagination li:nth-child(1) a:after{
+	transform: translateY(-6px) !important;
+}
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
     background-color: #CFF5FF;

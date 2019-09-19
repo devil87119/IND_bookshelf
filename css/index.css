@@ -26,6 +26,7 @@ div.contain{
 
 .name{
 	margin-left: 10px;
+    white-space: nowrap; /* 不斷行 */
 }
 
 .top{
