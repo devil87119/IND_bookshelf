@@ -11,12 +11,15 @@ div.contain{
 	margin-bottom: 10%;
 	background-color: #8B4513;
 }
+.main_table{
+	
+}
 table{
 	margin: 0;
 	padding = 0;
 }
 #books{
-	background-color: red;
+	background-color: white;
 }
 #books thead {
 	background: #000000;
