@@ -10,6 +10,17 @@ $(document).ready(function(){
     })
 })
 
+function show_box(){
+	if($('#fbox').hasClass('box_hide') ){
+		$('#fbox').removeClass('box_hide');
+		$('#fbox').addClass('box_show');
+	}
+	else {
+		$('#fbox').removeClass('box_show');
+		$('#fbox').addClass('box_hide');
+	}
+}
+
 function list(){
 	$('#books').bootstrapTable({
 		toolbar:'#toolbar',
@@ -27,16 +38,18 @@ function list(){
 		pagination: true,
 		columns: [{
 			field: "check",
-			checkbox:true,
+			title: "123",
+			hideSelectAll: true,
+			checkbox: true
 		},{
 			field: 'Item',
-			title: 'Item',
+			title: '書名<span class = "imply">(先勾選要借的書，再按借書)<span>',
 			width: '60%',
 			switchable: true,
 			sortable: true
 		}, {
 			field: 'Total',
-			title: 'Total',
+			title: '個數',
 			switchable: true,
 			sortable: false
 		}, {
@@ -69,10 +82,43 @@ function list(){
 			$($element).addClass('custom--select');
 		}*/
 		rowStyle(row, -1);
+		//document.getElementById( "borrow1" ).innerHTML = JSON.stringify($('#books').bootstrapTable('getSelections'))
 		//console.log(row);
 		//console.log($element);
 		//$($element).siblings().removeClass('custom--select');
 		//$($element).addClass('custom--select');
+	});
+	var checkedRows = [];
+	var now_select_books
+	var show_books
+	$('#books').on('check.bs.table', function (e, row) {
+	  checkedRows.push({Item: row.Item});
+		//document.getElementById( "borrow1" ).innerHTML =checkedRows;
+	  console.log(checkedRows);
+	});
+	$('#books').on('uncheck.bs.table', function (e, row) {
+	  $.each(checkedRows, function(index, value) {
+	    if (value.Item === row.Item) {
+	      checkedRows.splice(index,1);
+				return;
+	    }
+	  });
+	  console.log(checkedRows);
+	});
+
+	$("#books").click(function() {
+	  $("#output").empty();
+		now_select_books = ""
+		show_books = ""
+	  $.each(checkedRows, function(index, value) {
+	    now_select_books += value.Item+"，";// + " | " + value.forks
+			show_books += "<li>" + value.Item + "</li>"
+	  });
+		document.getElementById( "borrow1" ).innerHTML = show_books;
+		if(show_books === ""){
+			document.getElementById( "borrow1" ).innerHTML = "目前並無選擇任何書喔!"
+		}
+		document.getElementById( "borrow" ).value = now_select_books.slice(0, -1);// + " | " + value.forks
 	});
 }
 var checkAll = false;
@@ -84,7 +130,7 @@ function rowStyle(row, index) {
       'bg_tr2 ',
     ]
 	if (index == -1) {
-		console.log(row);
+		//console.log(row);
       return {
         classes: 'custom--select'
       }
@@ -109,8 +155,8 @@ $(function() {
  })
 
 $(function(){//custom search
-$(".search").append('<span class="glyphicon glyphicon-search"></span>');
-/* add the span inside search div with append box*/
+	$(".search").append('<span class="glyphicon glyphicon-search"></span>');
+	/* add the span inside search div with append box*/
 });
 
 function responseHandler(res) {
@@ -155,6 +201,7 @@ $.fn.bootstrapTable.locales['zh-CN'] = {
 		return '顯示欄位';
 	}
 };
+
 $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['zh-CN']);
 })(jQuery);
 
