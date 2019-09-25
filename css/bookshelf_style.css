@@ -162,15 +162,17 @@ tr.bg_tr2 td{
       line-height: 34px;
 }
 .page{
-	color: #F0E68C;
+	color: #DDAA00;
 	margin-left: 10px;
 	font-size: 15;
 }
 .page2{
-	color: #F0E68C;
+	color: #FFFF33;
 	margin-left: 10px;
-	margin-bottom: 15px;
-	font-size: 15;
+	margin-bottom: 5px;
+	transform: translateY(-5px);
+	font-size: 20;
+	font-weight: 400;
 }
 span button{
 	background-color: #00AA00 !important;
@@ -188,7 +190,7 @@ div .pagination{
 	margin-top: 20px;
 }
 .pagination a{
-	margin: 6px 1px;
+	margin: -5px 1px;
 	display: inline-block;
 	border-style: none;
 	background-color: #2c3e50;
