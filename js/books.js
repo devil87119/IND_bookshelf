@@ -211,6 +211,13 @@ $(function() {
     })
 })
 
+function send_hint(){
+		$('#hint').removeClass('hint_hide');
+		$('#hint').addClass('hint_show');
+		setTimeout("$('#hint').addClass('hint_hide')",2000);
+		setTimeout("$('#hint').removeClass('hint_show')",2000);
+}
+
 function csvJSON(csv){
   var lines=csv.split("\n");
   var result = [];

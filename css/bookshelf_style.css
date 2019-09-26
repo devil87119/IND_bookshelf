@@ -14,7 +14,18 @@ div.contain{
 	background-color: #8B4513;
 	background-image: url(../pic/Patrick.png);
 	background-position: center;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; 
+	animation: Patrick 3s linear 1;
+}
+@keyframes Patrick{
+	0%
+	{
+		background-position: -9999px 50%;
+	}
+	100%
+	{
+		background-position: center;
+	}
 }
 .fill_box{
 	/*visibility: hidden;*/
@@ -30,6 +41,7 @@ div.contain{
 	box-shadow: 0 20px 50px rgba(0,0,0,.5);
 	overflow: hidden;
 	color: #CCDDFF;
+	z-index: 10;
 }
 .box_tool{
 	position: absolute;
@@ -48,6 +60,25 @@ div.contain{
 .box_hide{
 	visibility: hidden;
 }
+.hint_show{
+	visibility: visible;
+	animation: hide 2s linear 1;
+}
+@keyframes hide{
+	0%
+	{
+		color: rgba(inherit,inherit,inherit,1);
+		margin-left: inherit;
+	}
+	100%
+	{
+		color: #0044BB;
+		margin-left: 100px;
+	}
+}
+.hint_hide{
+	visibility: hidden;
+}
 .th-inner label:nth-child(1){
 	visibility: hidden;
 }
@@ -59,6 +90,9 @@ div.contain{
 }
 .bor-btn:hover{
 	background-color: #FFBB00;
+}
+.hint{
+	margin-left: 30px;
 }
 .form{
 	margin-top: 10px;

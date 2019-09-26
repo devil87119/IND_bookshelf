@@ -54,17 +54,19 @@
     <div class = "box_tool">
         <i class = "fas fa-times" onclick="show_box()"></i>
     </div>
-    <form action="http://www.ccsakura-net.com/indbookshiftborrow.php" method="post" class = "form">
+    <form action="http://www.ccsakura-net.com/indbookshiftborrow.php" method="post" class = "form" target="nm_iframe">
     　姓名：<input type="text" name="username" placeholder = "請填寫你的姓名或學號"><br>
     　信箱：<input type="text" name="usermail" placeholder = "請填寫你的信箱"><br><br>
     　已選書名：<input type="hidden">
     　<ul class = "inside">
           <font id = "borrow1">還未選書，趕快借書吧!</font>
       </ul>
-      <input type="submit" value="確認送出" id = "send">
+      <input type="submit" value="確認送出" id = "send" onclick="send_hint()">
       <input type="hidden" name="books" value = "" id = "borrow">
     　<input type="hidden" name="passwd" value = "indshift" id = "password">
+      <span class = "hint hint_hide" id = "hint">成功送出!<span>
     </form>
+     <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
   <div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
