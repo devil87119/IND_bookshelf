@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* Main Style */
 body{
-	margin: 0;	
+	margin: 0;
 	font-family: 'Poppins', sans-serif;
 	padding = 0;
 }
@@ -13,7 +13,7 @@ div.contain{
 }
 #title{
 	font-family: "montserrat", sans-serif;
-	font-size: 80px;	
+	font-size: 80px;
 	transform: translate(0%,-50%);
 	float:left;
 	margin-left: 10px;
@@ -50,6 +50,23 @@ div.contain{
 .link1{
 	color: white;
 	float:left;
+	font-size: 24px;
+	animation: link 1s linear 1;
+}
+@keyframes link {
+	0%
+	{
+		font-size: 48px;
+		margin-right: 100px;
+	}
+	100%
+	{
+		font-size: 24px;
+		margin-right: 5px;
+	}
+}
+.bottom a:hover:nth-child(1) .link1{
+	color: #9F88FF;
 }
 
 @keyframes water {

@@ -93,6 +93,17 @@ function list(){
 	var show_books
 	$('#books').on('check.bs.table', function (e, row) {
 	  checkedRows.push({Item: row.Item});
+		now_select_books = ""
+		show_books = ""
+	  $.each(checkedRows, function(index, value) {
+	    now_select_books += value.Item+"，";// + " | " + value.forks
+			show_books += "<li>" + value.Item + "</li>"
+	  });
+		document.getElementById( "borrow1" ).innerHTML = show_books;
+		if(show_books === ""){
+			document.getElementById( "borrow1" ).innerHTML = "目前並無選擇任何書喔!"
+		}
+		document.getElementById( "borrow" ).value = now_select_books.slice(0, -1);// + " | " + value.forks
 		//document.getElementById( "borrow1" ).innerHTML =checkedRows;
 	  console.log(checkedRows);
 	});
@@ -103,6 +114,18 @@ function list(){
 				return;
 	    }
 	  });
+
+			now_select_books = ""
+			show_books = ""
+		  $.each(checkedRows, function(index, value) {
+		    now_select_books += value.Item+"，";// + " | " + value.forks
+				show_books += "<li>" + value.Item + "</li>"
+		  });
+			document.getElementById( "borrow1" ).innerHTML = show_books;
+			if(show_books === ""){
+				document.getElementById( "borrow1" ).innerHTML = "目前並無選擇任何書喔!"
+			}
+			document.getElementById( "borrow" ).value = now_select_books.slice(0, -1);// + " | " + value.forks
 	  console.log(checkedRows);
 	});
 
