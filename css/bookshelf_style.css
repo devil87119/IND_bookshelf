@@ -281,7 +281,7 @@ div .pagination{
 }
 .pagination a:hover:after{
 	border-color: white;
-	border-right-color: #2c3e50 !important;
+	border-left-color: #2c3e50;
 }
 .pagination a:hover::before{
 	border-right-color: white !important;
@@ -289,6 +289,8 @@ div .pagination{
 .pagination .active a{
 	color: #e74c3c !important;
 	background-color: #CCCCFF !important;
+	z-index: 2 !important;
+	pointer-events:none;
 }
 .pagination .active a:after{
 	border-left-color: #CCCCFF !important;
