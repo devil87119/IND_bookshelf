@@ -3,7 +3,7 @@ $(document).ready(function(){
 	ajax : function (request) {
         $.ajax({
             type : "GET",
-            url : "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmgEqTF0aRgK2DQpVDrEZd-Dt9n1RLp6xR6GZ2LOWdW1hnIWd6HawsXrq9vTr8ACU0UVapyIb76ZgR/pub?gid=1713242840&single=true&output=csv",
+            url : "https://docs.google.com/spreadsheets/d/e/2PACX-1vQK1TZGw4XSS_FLgdZRRvGEb6Tkv9iUNy9tvQxsctlM4wg0-O49H0AgR3eUkyHS7J0-ClwsYui1r6HL/pub?gid=2091510606&single=true&output=csv",
 			contentType: "application/json;charset=utf-8",
 			dataType:"jsonp",
 			data:'',
