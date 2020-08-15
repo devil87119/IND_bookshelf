@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* Main Style */
+body{
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	padding = 0;
+}
+div.contain{
+	background-image: url(../pic/海洋大學夜景.jpg);
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#title{
+	font-family: "montserrat", sans-serif;
+	font-size: 80px;
+	transform: translate(0%,-50%);
+	float:left;
+	margin-left: 10px;
+	font-weight: 900;
+	color: #2c3e5036;
+	background-image: url(../pic/water.png);
+	-webkit-background-clip:text;
+	animation: water 20s infinite;
+}
+
+.name{
+	margin-left: 10px;
+    white-space: nowrap; /* 不斷行 */
+}
+
+.top{
+	overflow: hidden; /* 超過範圍隱藏 */
+    white-space: nowrap; /* 不斷行 */
+	position: absolute;
+	top: 30px;
+	left: 30px;
+}
+
+.bottom{
+	float:right;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	z-index: 20;
+	color: white;
+	margin-right: 30px;
+}
+
+.link1{
+	color: white;
+	float:left;
+	font-size: 24px;
+	animation: link 1s linear 1;
+}
+@keyframes link {
+	0%
+	{
+		font-size: 48px;
+		margin-right: 100px;
+	}
+	100%
+	{
+		font-size: 24px;
+		margin-right: 5px;
+	}
+}
+.bottom a:hover:nth-child(1) .link1{
+	color: #9F88FF;
+}
+
+@keyframes water {
+	from{
+		background-position: left 0 top 0;
+	}
+	to{
+		background-position: left 1000px top 0;
+	}
+}
+
+#IND {
+	width: 150px;
+	float:left;
+}
+.rain{
+	overflow: hidden; /* 超過範圍隱藏 */
+	/*background-repeat: no-repeat;*/
+	height: 100vh;
+	background-image: url(../pic/rain.png);
+	animation: rain 0.4s linear infinite;
+}
+.rain: before{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	opacity: 1;
+}
+@keyframes rain{
+	0%{
+		background-position: 0% 0%;
+	}
+	100%{
+		background-position: 150px 250px;
+	}
+}
