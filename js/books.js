@@ -1,10 +1,10 @@
 var book;
 $(document).ready(function(){
 
-	$.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQK1TZGw4XSS_FLgdZRRvGEb6Tkv9iUNy9tvQxsctlM4wg0-O49H0AgR3eUkyHS7J0-ClwsYui1r6HL/pub?gid=2091510606&single=true&output=csv", function (data) {
+	$.get("https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vTvvXs2DBH_Tw4NNQ0NI7Hm3P5geMXXSwhiKq51ZiYQmsGjFkQ_UpbeMK6SVzllAiG6yfuXCZcTYBGL/pub?gid=0&single=true&output=csv", function (data) {
 		book = JSON.parse(csvJSON(data));
 		$(book).each(function (k, v) {
-			//console.log(v);
+			console.log(v);
 		})
 		list();
     })
@@ -60,10 +60,6 @@ function list(){
 		}, {
 			field: '借閱狀態',
 			title: '借閱狀態',
-			switchable: true
-		}, {
-			field: 'Note',
-			title: 'Note',
 			switchable: true
 		}],
 	data: book,
