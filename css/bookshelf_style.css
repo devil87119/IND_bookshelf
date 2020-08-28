@@ -268,7 +268,7 @@ div .pagination{
 }
 .pagination li:nth-child(-1n+8) a:after,.page-prev a:after{
 	border-right: 10px solid #8B4513;/*#8B4513*/
-	transform: translateY(-28px);
+	transform: translateY(-26px);
 	right: 0;
 	z-index: 0;
 }
