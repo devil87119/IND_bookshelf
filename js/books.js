@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$.get("https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vTvvXs2DBH_Tw4NNQ0NI7Hm3P5geMXXSwhiKq51ZiYQmsGjFkQ_UpbeMK6SVzllAiG6yfuXCZcTYBGL/pub?gid=0&single=true&output=csv", function (data) {
 		book = JSON.parse(csvJSON(data));
 		$(book).each(function (k, v) {
-			console.log(v);
+			//console.log(v);
 		})
 		list();
     })
@@ -64,7 +64,6 @@ function list(){
 		}],
 	data: book,
 	});
-	$('#books').bootstrapTable('hideColumn', 'Note');
 	$('#books').bootstrapTable('refreshOptions', {
         theadClasses: "thead-dark",
 		iconSize: 'sm'
@@ -99,9 +98,9 @@ function list(){
 		if(show_books === ""){
 			document.getElementById( "borrow1" ).innerHTML = "目前並無選擇任何書喔!"
 		}
-		document.getElementById( "borrow" ).value = now_select_books.slice(0, -1);// + " | " + value.forks
+		//document.getElementById( "borrow" ).value = now_select_books.slice(0, -1);// + " | " + value.forks
 		//document.getElementById( "borrow1" ).innerHTML =checkedRows;
-	  console.log(checkedRows);
+	  //console.log(checkedRows);
 	});
 	$('#books').on('uncheck.bs.table', function (e, row) {
 	  $.each(checkedRows, function(index, value) {
@@ -122,7 +121,7 @@ function list(){
 				document.getElementById( "borrow1" ).innerHTML = "目前並無選擇任何書喔!"
 			}
 			document.getElementById( "borrow" ).value = now_select_books.slice(0, -1);// + " | " + value.forks
-	  console.log(checkedRows);
+	  //console.log(checkedRows);
 	});
 
 	$("#books").click(function() {
